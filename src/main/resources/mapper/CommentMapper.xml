@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="org.xxz.myblog.mapper.CommentMapper">
+<mapper namespace="com.studyinghome.myblog.mapper.CommentMapper">
 
     <sql id="base_column">
         id, nick_name, email, site, content, parent_id, comment_obj, to_nick_name, status, create_time, audit_user, audit_time
@@ -27,17 +27,17 @@
         where id = #{id}
     </update>
     
-    <select id="findById" resultType="org.xxz.myblog.entity.Comment">
+    <select id="findById" resultType="com.studyinghome.myblog.entity.Comment">
         select <include refid="base_column"/> from <include refid="table_name"/>
         where id = #{id}
     </select>
     
-    <select id="findByParentId" resultType="org.xxz.myblog.entity.Comment">
+    <select id="findByParentId" resultType="com.studyinghome.myblog.entity.Comment">
         select <include refid="base_column"/> from <include refid="table_name"/>
         where parent_id = #{parentId}
     </select>
 
-    <select id="findByCommentObj" resultType="org.xxz.myblog.entity.Comment">
+    <select id="findByCommentObj" resultType="com.studyinghome.myblog.entity.Comment">
         select <include refid="base_column"/> from <include refid="table_name"/> t
         where t.comment_obj = #{commentObj} order by create_time desc
     </select>

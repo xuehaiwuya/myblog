@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="org.xxz.myblog.mapper.ArticleMapper">
+<mapper namespace="com.studyinghome.myblog.mapper.ArticleMapper">
 
 	<sql id="base_column">
 		id, title, fixed_link, content, html, is_show, sort_value, category_id, category_name,
@@ -9,7 +9,7 @@
 
 	<sql id="table_name">t_article</sql>
 
-	<insert id="save" parameterType="org.xxz.myblog.entity.Article" useGeneratedKeys="true" keyProperty="id">
+	<insert id="save" parameterType="com.studyinghome.myblog.entity.Article" useGeneratedKeys="true" keyProperty="id">
 	    insert into <include refid="table_name" />(<include refid="base_column" />)
 		values (#{id}, #{title}, #{fixedLink}, #{content}, #{html}, #{isShow}, #{sortValue}, #{categoryId},
 		#{categoryName}, #{tags}, #{createUser}, #{createUserName}, #{createTime}, #{updateUser}, #{updateTime}, 0)
@@ -42,17 +42,17 @@
 		where id = #{id}
 	</update>
 	
-	<select id="findById" resultType="org.xxz.myblog.entity.Article">
+	<select id="findById" resultType="com.studyinghome.myblog.entity.Article">
 		select <include refid="base_column"/> from <include refid="table_name"/>
 		where id = #{id}
 	</select>
 
-	<select id="findByFixedLink" resultType="org.xxz.myblog.entity.Article">
+	<select id="findByFixedLink" resultType="com.studyinghome.myblog.entity.Article">
 		select <include refid="base_column"/> from <include refid="table_name"/>
 		where fixed_link = #{fixedLink}
 	</select>
 	
-	<select id="findAll" resultType="org.xxz.myblog.entity.Article">
+	<select id="findAll" resultType="com.studyinghome.myblog.entity.Article">
 		select <include refid="base_column"/> from <include refid="table_name"/> p
 		where p.create_user = #{q.createUser}
 		<if test="status != -1">

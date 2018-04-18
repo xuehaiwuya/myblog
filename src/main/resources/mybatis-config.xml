@@ -27,7 +27,7 @@
     </settings>
     <!-- 
     <typeAliases>
-        <package name="org.xxz.myblog.entity"/>
+        <package name="com.studyinghome.myblog.entity"/>
     </typeAliases>
      -->
     <plugins>

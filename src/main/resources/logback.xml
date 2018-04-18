@@ -49,7 +49,7 @@
 	<logger name="org.springframework.*" level="info" />
 	<logger name="org.springframework.jdbc.datasource" level="info" />
 	<logger name="org.apache.ibatis.*" level="info" />
-	<logger name="org.xxz" level="debug" />
+	<logger name="com.studyinghome" level="debug" />
 
 	<root level="info">
 		<appender-ref ref="SystemLogService" />
