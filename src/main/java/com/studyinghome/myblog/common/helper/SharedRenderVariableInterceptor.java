@@ -11,7 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  * 拦截器,用于存放渲染视图时需要的的共享变量
- * @author tt
+ * @author panxiang
+ * @create 2018-04-17 22:15
  */
 @Configuration
 public class SharedRenderVariableInterceptor extends HandlerInterceptorAdapter {

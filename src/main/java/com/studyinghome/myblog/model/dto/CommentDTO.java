@@ -7,14 +7,18 @@ import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
 
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 
 /**
- * @author tt
+ * ${评论 dto}
+ *
+ * @author panxiang
+ * @create 2018-04-17 22:15
  */
 @Setter
 @Getter
 @ToString
-public class CommentDTO implements java.io.Serializable {
+public class CommentDTO implements Serializable {
 
     @NotNull(message = "评论对象不能为空")
     private Long articleId;

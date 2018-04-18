@@ -5,7 +5,9 @@ import com.studyinghome.myblog.common.util.DozerUtil;
 import com.studyinghome.myblog.model.dto.UserDTO;
 
 /**
- * @author tt
+ *
+ * @author panxiang
+ * @create 2018-04-18 10:25
  */
 public final class UserConvertUtil {
     

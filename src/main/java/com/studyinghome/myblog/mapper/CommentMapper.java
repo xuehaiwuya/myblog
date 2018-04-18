@@ -6,7 +6,10 @@ import org.apache.ibatis.annotations.Mapper;
 import java.util.List;
 
 /**
- * @author tt
+ * ${评论 mapper}
+ *
+ * @author panxiang
+ * @create 2018-04-17 22:15
  */
 @Mapper
 public interface CommentMapper {

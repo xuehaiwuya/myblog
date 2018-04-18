@@ -8,7 +8,10 @@ import com.studyinghome.myblog.model.query.ArticleQuery;
 import java.util.List;
 
 /**
- * @author tt
+ * ${文章 mapper}
+ *
+ * @author panxiang
+ * @create 2018-04-17 22:15
  */
 @Mapper
 public interface ArticleMapper {

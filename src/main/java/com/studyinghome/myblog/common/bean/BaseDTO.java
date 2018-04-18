@@ -4,7 +4,10 @@ import lombok.Getter;
 import lombok.Setter;
 
 /**
- * @author tt
+ * ${用户操作}
+ *
+ * @author panxiang
+ * @create 2018-04-17 09:10
  */
 @Setter
 @Getter

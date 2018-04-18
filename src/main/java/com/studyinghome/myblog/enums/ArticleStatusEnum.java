@@ -1,7 +1,10 @@
 package com.studyinghome.myblog.enums;
 
 /**
- * @author tt
+ * ${文章状态}
+ *
+ * @author panxiang
+ * @create 2018-04-17 22:30
  */
 public enum ArticleStatusEnum {
 

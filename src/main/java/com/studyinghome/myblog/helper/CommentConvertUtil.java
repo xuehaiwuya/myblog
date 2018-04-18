@@ -4,11 +4,15 @@ import com.studyinghome.myblog.entity.Comment;
 import com.studyinghome.myblog.common.util.DateUtil;
 import com.studyinghome.myblog.model.dto.CommentDTO;
 import com.studyinghome.myblog.model.vo.CommentVO;
+import org.springframework.util.Assert;
 
 import java.util.Date;
 
 /**
- * @author tt
+ * ${评论工具}
+ *
+ * @author panxiang
+ * @create 2018-04-17 22:15
  */
 public class CommentConvertUtil {
 
@@ -17,9 +21,8 @@ public class CommentConvertUtil {
         if (vo == null) {
             vo = new CommentVO();
         }
-        if (c == null) {
-            throw new IllegalArgumentException("comment must not be null");
-        }
+
+        Assert.notNull(c,"comment must not be null");
         vo.setId(c.getId());
         vo.setContent(c.getContent());
         vo.setCreateTime(DateUtil.date2String(new Date(c.getCreateTime()), "yyyy-MM-dd HH:mm"));
@@ -35,9 +38,7 @@ public class CommentConvertUtil {
             c = new Comment();
         }
 
-        if (commentDTO == null) {
-            throw new IllegalArgumentException("commentDTO must not be null");
-        }
+        Assert.notNull(commentDTO,"commentDTO must not be null");
         c.setSite(commentDTO.getSite());
         c.setNickName(commentDTO.getNickName());
         c.setCommentObj(commentDTO.getArticleId());

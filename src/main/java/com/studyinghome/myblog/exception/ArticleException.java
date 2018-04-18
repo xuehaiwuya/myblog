@@ -4,7 +4,10 @@ import com.studyinghome.myblog.common.exception.CustomRuntimeException;
 import com.studyinghome.myblog.common.exception.ExceptionStatus;
 
 /**
- * @author tt
+ * ${文章异常}
+ *
+ * @author panxiang
+ * @create 2018-04-17 23:07
  */
 public class ArticleException extends CustomRuntimeException {
 

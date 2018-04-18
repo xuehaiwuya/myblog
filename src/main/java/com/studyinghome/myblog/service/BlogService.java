@@ -6,7 +6,10 @@ import com.studyinghome.myblog.model.vo.ArticleVO;
 import java.util.List;
 
 /**
- * @author tt
+ * ${博客文章操作}
+ *
+ * @author panxiang
+ * @create 2018-04-17 22:15
  */
 public interface BlogService {
 

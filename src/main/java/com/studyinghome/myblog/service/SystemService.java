@@ -6,7 +6,9 @@ import com.studyinghome.myblog.model.dto.SysParamDTO;
 import com.studyinghome.myblog.model.vo.SysParamVO;
 
 /**
- * @author tt
+ *
+ * @author panxiang
+ * @create 2018-04-17 22:15
  */
 public interface SystemService {
 

@@ -5,7 +5,10 @@ import com.studyinghome.myblog.common.util.DozerUtil;
 import com.studyinghome.myblog.model.dto.CategoryDTO;
 
 /**
- * @author tt
+ * ${分类工具}
+ *
+ * @author panxiang
+ * @create 2018-04-17 22:15
  */
 public final class CategoryConvertUtil {
 

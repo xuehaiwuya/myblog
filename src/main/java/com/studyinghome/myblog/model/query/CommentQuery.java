@@ -6,7 +6,9 @@ import lombok.ToString;
 import com.studyinghome.myblog.common.bean.BaseQuery;
 
 /**
- * @author tt
+ *
+ * @author panxiang
+ * @create 2018-04-17 22:15
  */
 @Setter
 @Getter

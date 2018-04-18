@@ -9,7 +9,10 @@ import com.studyinghome.myblog.model.vo.ArticleVO;
 import java.util.List;
 
 /**
- * @author tt
+ * ${文章后台操作}
+ *
+ * @author panxiang
+ * @create 2018-04-17 22:15
  */
 public interface AdminArticleService {
 

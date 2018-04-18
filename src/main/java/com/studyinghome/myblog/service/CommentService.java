@@ -8,7 +8,10 @@ import com.studyinghome.myblog.model.vo.CommentVO;
 import java.util.List;
 
 /**
- * @author tt
+ * ${评论}
+ *
+ * @author panxiang
+ * @create 2018-04-17 22:15
  */
 public interface CommentService {
 

@@ -12,8 +12,9 @@ import java.util.List;
  * 2. 返回值类型转换.
  * 3. 批量转换Collection中的所有对象.
  * 4. 区分创建新的B对象与将对象A值复制到已存在的B对象两种函数.
- * 
- * @author xxzkid
+ *
+ * @author panxiang
+ * @create 2018-04-17 22:15
  */
 public class DozerUtil {
 

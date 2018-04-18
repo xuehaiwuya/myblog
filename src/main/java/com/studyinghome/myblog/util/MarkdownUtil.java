@@ -4,7 +4,10 @@ import org.pegdown.Extensions;
 import org.pegdown.PegDownProcessor;
 
 /**
- * @author tt
+ * ${markdown工具}
+ *
+ * @author panxiang
+ * @create 2018-04-17 22:15
  */
 public final class MarkdownUtil {
 

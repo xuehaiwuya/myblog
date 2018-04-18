@@ -6,7 +6,8 @@ import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.context.annotation.ComponentScan;
 
 /**
- * @author tt
+ * @author panxiang
+ * @create 2018-04-17 22:15
  */
 @SpringBootApplication
 @ComponentScan(basePackages = {"com.studyinghome.myblog"})

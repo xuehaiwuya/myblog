@@ -15,7 +15,10 @@ import javax.validation.Valid;
 import java.util.List;
 
 /**
- * @author tt
+ * ${评论 controller}
+ *
+ * @author panxiang
+ * @create 2018-04-17 22:15
  */
 @Controller
 @RequestMapping("/comment")
@@ -24,6 +27,7 @@ public class CommentController {
     @Resource
     private CommentService commentService;
 
+    //通过文章id获取评论
     @RequestMapping(value = "/list/{articleId}")
     @ResponseBody
     public Result<?> list(@PathVariable("articleId") Long articleId,
@@ -38,6 +42,7 @@ public class CommentController {
         return Result.success("ok", page);
     }
 
+    //添加文章评论
     @PostMapping(value = "/save")
     @ResponseBody
     public Result<?> save(@Valid CommentDTO commentDTO, BindingResult result) {

@@ -7,7 +7,8 @@ import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
 /**
- * @author tt
+ * @author panxiang
+ * @create 2018-04-17 22:15
  */
 @Slf4j
 @Component

@@ -5,7 +5,9 @@ import java.util.regex.Pattern;
 
 /**
  * 清除html标签
- * @author xxzkid
+ *
+ * @author panxiang
+ * @create 2018-04-17 22:15
  */
 public class HtmlUtil {
 	private static final String REGEX_SCRIPT = "<script[^>]*?>[\\s\\S]*?<\\/script>"; // 定义script的正则表达式

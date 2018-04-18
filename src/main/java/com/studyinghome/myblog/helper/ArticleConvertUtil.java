@@ -8,7 +8,10 @@ import com.studyinghome.myblog.model.vo.ArticleVO;
 import java.util.Date;
 
 /**
- * @author tt
+ * ${文章转换操作}
+ *
+ * @author panxiang
+ * @create 2018-04-18 14:32
  */
 public final class ArticleConvertUtil {
 

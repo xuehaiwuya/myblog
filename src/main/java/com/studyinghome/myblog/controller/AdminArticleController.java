@@ -23,7 +23,10 @@ import javax.validation.Valid;
 import java.util.List;
 
 /**
- * @author tt
+ * ${文章后台操作}
+ *
+ * @author panxiang
+ * @create 2018-04-17 22:15
  */
 @Controller
 @RequestMapping(value = "/admin/article")
@@ -33,7 +36,8 @@ public class AdminArticleController {
     private AdminArticleService adminArticleService;
     @Autowired
     private CategoryService categoryService;
-    
+
+    //获取当前用户所有文章列表
     @Security
     @GetMapping(value = "/myList")
     public ModelAndView myList(ArticleQuery articleQuery) {
@@ -59,12 +63,14 @@ public class AdminArticleController {
         
         return mv;
     }
-    
+
+    //获得所有分类
     private List<Category> userCategorys(long userId) {
         List<Category> categorys = categoryService.getCategorys(userId);
         return categorys;
     }
 
+    //修改编辑文章
     @Security
     @GetMapping(value = "/edit/{articleId}")
     public ModelAndView edit(@PathVariable("articleId") Long articleId) {
@@ -83,6 +89,7 @@ public class AdminArticleController {
         }
     }
 
+    //删除文章
     @Security
     @GetMapping(value = "/delete/{articleId}")
     @ResponseBody
@@ -91,6 +98,7 @@ public class AdminArticleController {
         return adminArticleService.deleteArticle(articleId, user);
     }
 
+    //新增文章
     @Security
     @PostMapping(value = "/add")
     @ResponseBody
@@ -106,7 +114,8 @@ public class AdminArticleController {
         articleDTO.setUpdateUserName(user.getNickName());
         return adminArticleService.addOrUpdateArticle(articleDTO);
     }
-    
+
+    //添加文章分类
     @Security
     @PostMapping(value = "/addCategory")
     @ResponseBody
@@ -120,7 +129,8 @@ public class AdminArticleController {
         categoryDTO.setUpdateUserName(user.getNickName());
         return categoryService.addCategory(categoryDTO);
     }
-    
+
+    //获取用户分类
     @Security
     @RequestMapping(value = "/categorys")
     @ResponseBody

@@ -18,7 +18,10 @@ import javax.annotation.Resource;
 import java.util.List;
 
 /**
- * @author tt
+ * ${评论 service}
+ *
+ * @author panxiang
+ * @create 2018-04-17 22:15
  */
 @Service
 public class CommentServiceImpl implements CommentService {
@@ -26,6 +29,12 @@ public class CommentServiceImpl implements CommentService {
     @Resource
     private CommentMapper commentMapper;
 
+    /**
+     * 通过文章id获取评论
+     *
+     * @param commentQuery
+     * @return
+     */
     @Override
     public List<CommentVO> getCommentsByArticleId(CommentQuery commentQuery) {
         PageHelper.startPage(commentQuery.getPageNum(), commentQuery.getPageSize());
@@ -39,6 +48,12 @@ public class CommentServiceImpl implements CommentService {
         return page;
     }
 
+    /**
+     * 添加评论
+     *
+     * @param commentDTO
+     * @return
+     */
     @Override
     public Result<?> save(CommentDTO commentDTO) {
         Assert.notNull(commentDTO, "commentDTO must not be null");

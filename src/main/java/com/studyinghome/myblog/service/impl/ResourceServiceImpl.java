@@ -20,7 +20,8 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * @author tt
+ * @author panxiang
+ * @create 2018-04-17 22:15
  */
 @Slf4j
 @Service
@@ -29,6 +30,11 @@ public class ResourceServiceImpl implements ResourceService {
     @Autowired
     private SysResourceMapper sysResourceMapper;
 
+    /**
+     * 通过用户id获取资源
+     * @param userId
+     * @return
+     */
     @Override
     public List<ResourceVO> getAllResource(long userId) {
         List<SysResource> sysResourceList = sysResourceMapper.findByUserId(userId);
@@ -42,6 +48,12 @@ public class ResourceServiceImpl implements ResourceService {
         return list;
     }
 
+    /**
+     * 添加用户资源信息
+     * @param request
+     * @param user
+     * @return
+     */
     @Transactional
     @Override
     public Result<List<ResourceVO>> saveResource(HttpServletRequest request, IUser user) {

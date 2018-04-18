@@ -1,7 +1,8 @@
 package com.studyinghome.myblog.common.security;
 
 /**
- * @author tt
+ * @author panxiang
+ * @create 2018-04-17 22:15
  */
 public class SessionUserContext {
 

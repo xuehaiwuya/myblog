@@ -16,7 +16,10 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.List;
 
 /**
- * @author tt
+ * ${博客页面展示操作}
+ *
+ * @author panxiang
+ * @create 2018-04-17 22:15
  */
 @Controller
 @RequestMapping("/article")
@@ -29,6 +32,7 @@ public class ArticleController {
     @Autowired
     private CategoryService categoryService;
 
+    //获取所有博客文章
     @RequestMapping(value = "/list")
     public ModelAndView postList(ArticleQuery articleQuery) {
         ModelAndView mv = new ModelAndView();
@@ -40,6 +44,7 @@ public class ArticleController {
         return mv;
     }
 
+    //通过fixedLink获取文章
     @RequestMapping(value = "/{fixedLink}", method = RequestMethod.GET)
     public ModelAndView detail(@PathVariable("fixedLink") String fixedLink) {
         ModelAndView mv = new ModelAndView();
@@ -59,21 +64,24 @@ public class ArticleController {
         mv.setViewName("article/detail");
         return mv;
     }
-    
+
+    //获取分类列表
     @GetMapping("/categorys")
     @ResponseBody
     public Result<?> categorys() {
         List<Category> categorys = categoryService.getCategorys(defaultCreateUser);
         return Result.success("", categorys);
     }
-    
+
+    //通过文章id获取文章详情
     @GetMapping("/pv/{articleId}")
     @ResponseBody
     public Result<?> pv(@PathVariable("articleId") Long articleId) {
         blogService.updateArticlePV(articleId);
         return Result.success("ok");
     }
-    
+
+    //网页导航栏数据
     @GetMapping("/sidebar")
     public ModelAndView sidebar() {
     	ModelAndView mv = new ModelAndView("/article/_sidebar");
@@ -87,14 +95,16 @@ public class ArticleController {
         
         return mv;
     }
-    
+
+    //网页的头部数据
     @GetMapping("/header")
     public ModelAndView header() {
     	ModelAndView mv = new ModelAndView("/article/_header");
     	getCategorys(mv, defaultCreateUser);
     	return mv;
     }
-    
+
+    //获取网页的导航(文章的分类)
     private void getCategorys(ModelAndView mv, Long createUser) {
     	List<Category> categorys = categoryService.getCategorys(defaultCreateUser);
         mv.addObject("categorys", categorys);

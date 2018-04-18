@@ -6,8 +6,10 @@ import lombok.Setter;
 import lombok.ToString;
 
 /**
- * @author tt
- * @param <T> 数据
+ * ${返回状态结果}
+ *
+ * @author panxiang
+ * @create 2018-04-17 22:15
  */
 @Setter
 @Getter

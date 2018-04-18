@@ -1,22 +1,25 @@
 package com.studyinghome.myblog.model.vo;
 
+import com.studyinghome.myblog.common.util.HtmlUtil;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 import org.apache.commons.lang3.StringUtils;
-import com.studyinghome.myblog.common.util.HtmlUtil;
 
+import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
 /**
- * @author tt
+ *
+ * @author panxiang
+ * @create 2018-04-17 22:15
  */
 @Setter
 @Getter
 @ToString
-public class ArticleVO implements java.io.Serializable {
+public class ArticleVO implements Serializable {
 
     private static final long serialVersionUID = 8355902141000751051L;
 
@@ -31,7 +34,6 @@ public class ArticleVO implements java.io.Serializable {
     private String createUserName;
     private Date createTime;
     private Long categoryId;
-    
     private String tags;
     private Long pv;
     

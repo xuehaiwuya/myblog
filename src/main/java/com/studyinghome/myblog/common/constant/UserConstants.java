@@ -1,7 +1,10 @@
 package com.studyinghome.myblog.common.constant;
 
 /**
- * @author tt
+ * ${用户登录session}
+ *
+ * @author panxiang
+ * @create 2018-04-18 09:30
  */
 public final class UserConstants {
 

@@ -7,8 +7,9 @@ import java.util.Date;
 
 /**
  * 日期工具类
- * @author xxzkid
  *
+ * @author panxiang
+ * @create 2018-04-17 22:15
  */
 public final class DateUtil {
 

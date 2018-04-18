@@ -13,7 +13,10 @@ import javax.validation.constraints.Pattern;
 import java.util.Date;
 
 /**
- * @author tt
+ * ${文章dto}
+ *
+ * @author panxiang
+ * @create 2018-04-17 22:15
  */
 @Setter
 @Getter

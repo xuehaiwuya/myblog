@@ -7,7 +7,10 @@ import com.studyinghome.myblog.model.dto.CategoryDTO;
 import java.util.List;
 
 /**
- * @author tt
+ * ${文章分类操作}
+ *
+ * @author panxiang
+ * @create 2018-04-17 22:15
  */
 public interface CategoryService {
     

@@ -17,7 +17,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 /**
- * @author tt
+ * ${用户操作}
+ *
+ * @author panxiang
+ * @create 2018-04-18 11:09
  */
 @Controller
 @RequestMapping(value = "/user")
@@ -26,18 +29,22 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    //通过session判断用户是否登录
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public ModelAndView login(HttpServletRequest request) {
         ModelAndView mv = new ModelAndView();
         IUser user = (IUser)request.getSession().getAttribute(UserConstants.SESSION_USER);
         if(user != null) {
+            //已经登录则返回用户文章列表
             mv.setViewName("redirect:/admin/article/myList");
             return mv;
         }
+        //未登录，返回到登录界面
         mv.setViewName("admin/user/login");
         return mv;
     }
 
+    //用户登录
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     @ResponseBody
     public Result<?> doLogin(HttpServletRequest request, @Valid UserDTO userDto, BindingResult result) {
@@ -47,6 +54,7 @@ public class UserController {
         return userService.userLogin(userDto, request);
     }
 
+    //退出登录
     @RequestMapping(value = "/logout")
     @ResponseBody
     public Result<?> logout(HttpServletRequest request) {

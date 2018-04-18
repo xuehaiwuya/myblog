@@ -4,7 +4,9 @@ import com.studyinghome.myblog.common.exception.ExceptionStatus;
 
 /**
  * 分类异常状态码(30000-39999)
- * @author tt
+ *
+ * @author panxiang
+ * @create 2018-04-18 10:05
  */
 public enum UserExceptionEnum implements ExceptionStatus {
 

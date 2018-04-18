@@ -20,7 +20,8 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @author tt
+ * @author panxiang
+ * @create 2018-04-17 22:15
  */
 @Service
 public class SystemServiceImpl implements SystemService {
@@ -28,6 +29,10 @@ public class SystemServiceImpl implements SystemService {
     @Resource
     private SysParamMapper sysParamMapper;
 
+    /**
+     * 获取所有系统设置信息
+     * @return
+     */
     @Override
     public SysParamVO getAllSysParam() {
         List<SysParam> all = sysParamMapper.findAll();
@@ -43,6 +48,12 @@ public class SystemServiceImpl implements SystemService {
         return sysParamVO;
     }
 
+    /**
+     * 添加/修改参数信息
+     * @param sysParamDTO
+     * @param user
+     * @return
+     */
     @Transactional
     @Override
     public Result<?> save(SysParamDTO sysParamDTO, IUser user) {

@@ -4,7 +4,9 @@ import javax.servlet.http.HttpServletRequest;
 
 /**
  * web工具类
- * @author tt
+ *
+ * @author panxiang
+ * @create 2018-04-17 22:15
  */
 public final class WebUtil {
 

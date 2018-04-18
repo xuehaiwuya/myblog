@@ -8,7 +8,10 @@ import org.hibernate.validator.constraints.NotEmpty;
 import com.studyinghome.myblog.common.bean.BaseDTO;
 
 /**
- * @author tt
+ * ${用户操作}
+ *
+ * @author panxiang
+ * @create 2018-04-18 09:21
  */
 @Setter
 @Getter

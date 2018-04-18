@@ -23,6 +23,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.Assert;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -31,7 +32,10 @@ import static com.studyinghome.myblog.enums.ArticleExceptionEnum.*;
 import static com.studyinghome.myblog.enums.CategoryExceptionEnum.NOT_FOUND_CATEGORY;
 
 /**
- * @author tt
+ * ${文章后台管理操作}
+ *
+ * @author panxiang
+ * @create 2018-04-17 22:15
  */
 @Slf4j
 @Service
@@ -42,16 +46,22 @@ public class AdminArticleServiceImpl implements AdminArticleService {
     @Resource
     private CategoryMapper categoryMapper;
 
+    /**
+     * 添加/更新文章
+     *
+     * @param articleDTO
+     * @return
+     */
     @Transactional
     @Override
     public Result<?> addOrUpdateArticle(ArticleDTO articleDTO) {
-        if(articleDTO == null) {
-            throw new IllegalArgumentException("参数错误");
-        }
+        //1.判断传值是否为空
+        Assert.notNull(articleDTO,"参数错误");
 
         String html = MarkdownUtil.markdown2Html(articleDTO.getContent());
 
         String categoryName = null;
+        //2.判断文章分类是为空则设置为默认分类
         if (articleDTO.getCategoryId() == null || articleDTO.getCategoryId() == 0) {
             articleDTO.setCategoryId(0L);
             categoryName = "默认";
@@ -65,7 +75,7 @@ public class AdminArticleServiceImpl implements AdminArticleService {
             categoryName = category.getName();
         }
 
-        if(articleDTO.getId() == null) {
+        if(articleDTO.getId() == null) {//添加文章
             // 查询fixedLink是否存在
             Article p = articleMapper.findByFixedLink(articleDTO.getFixedLink());
             if(p != null) {
@@ -83,7 +93,7 @@ public class AdminArticleServiceImpl implements AdminArticleService {
             article.setHtml(html);
             article.setCategoryName(categoryName);
             articleMapper.save(article);
-        } else {
+        } else {//修改文章
             Article oldArticle = articleMapper.findById(articleDTO.getId());
 
             if(!oldArticle.getCreateUser().equals(oldArticle.getCreateUser())) {
@@ -101,6 +111,13 @@ public class AdminArticleServiceImpl implements AdminArticleService {
         return Result.success("保存成功");
     }
 
+    /**
+     * 编辑文章内容
+     *
+     * @param articleId
+     * @param user 当前登录用户
+     * @return
+     */
     @Override
     public Result<ArticleVO> editArticle(Long articleId, IUser user) {
         if(articleId == null || user == null) {
@@ -109,16 +126,23 @@ public class AdminArticleServiceImpl implements AdminArticleService {
         }
 
         Article article = articleMapper.findById(articleId);
-        if(article == null) {
+        if(article == null) {//文章不存在
             throw new ArticleException(NOT_FOUND_ARTICLE);
         }
-
+        //创建人和编辑人不同则没有编辑权限
         if(!article.getCreateUser().equals(user.getId())) {
             throw new ArticleException(NOT_EDIT_ARTICLE);
         }
         return Result.success("", ArticleConvertUtil.article2ArticleVO(article));
     }
 
+    /**
+     * 删除文章
+     *
+     * @param articleId
+     * @param user
+     * @return
+     */
     @Transactional
     @Override
     public Result<?> deleteArticle(Long articleId, IUser user) {
@@ -126,16 +150,22 @@ public class AdminArticleServiceImpl implements AdminArticleService {
             throw new CustomRuntimeException(ErrorEnum.PARAM_ERROR);
         }
         Article article = articleMapper.findById(articleId);
-        if(article == null) {
+        if(article == null) {//文章不存在
             throw new ArticleException(NOT_FOUND_ARTICLE);
         }
-        if(!article.getCreateUser().equals(user.getId())) {
+        if(!article.getCreateUser().equals(user.getId())) {//权限不足
             throw new ArticleException(NOT_DELETE_ARTICLE);
         }
         articleMapper.delete(articleId);
         return Result.success("删除成功");
     }
 
+    /**
+     * 分页获取用户所有文章列表
+     *
+     * @param articleQuery
+     * @return
+     */
     @Override
     public List<ArticleVO> getUserArticleAll(ArticleQuery articleQuery) {
         PageHelper.startPage(articleQuery.getPageNum(), articleQuery.getPageSize());

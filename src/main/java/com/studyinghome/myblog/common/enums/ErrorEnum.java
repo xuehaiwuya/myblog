@@ -4,7 +4,8 @@ import com.studyinghome.myblog.common.constant.ResultConst;
 import com.studyinghome.myblog.common.exception.ExceptionStatus;
 
 /**
- * @author tt
+ * @author panxiang
+ * @create 2018-04-17 22:15
  */
 public enum ErrorEnum implements ExceptionStatus {
 

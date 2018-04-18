@@ -3,7 +3,8 @@ package com.studyinghome.myblog.common.annotation;
 import java.lang.annotation.*;
 
 /**
- * @author tt
+ * @author panxiang
+ * @create 2018-04-17 22:15
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)

@@ -11,13 +11,17 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.Assert;
 
 import java.util.List;
 
 import static com.studyinghome.myblog.enums.CategoryExceptionEnum.NOT_FOUND_CATEGORY;
 
 /**
- * @author tt
+ * ${文章分类操作}
+ *
+ * @author panxiang
+ * @create 2018-04-17 22:15
  */
 @Slf4j
 @Service
@@ -26,16 +30,18 @@ public class CategoryServiceImpl implements CategoryService {
     @Autowired
     private CategoryMapper categoryMapper;
 
+    /**
+     * 添加/修改分类
+     *
+     * @param categoryDTO
+     * @return
+     */
     @Transactional
     @Override
     public Result<?> addCategory(CategoryDTO categoryDTO) {
-    	
-        if(categoryDTO == null) {
-        	log.error("categoryDTO is null");
-            throw new IllegalArgumentException("参数错误");
-        }
-        
-        if(categoryDTO.getId() == null) {
+        Assert.notNull(categoryDTO,"参数错误:categoryDTO is null");
+
+        if(categoryDTO.getId() == null) {//添加分类
             Category category = CategoryConvertUtil.categoryDTO2Category(categoryDTO, null);
             long now = System.currentTimeMillis();
             category.setCreateTime(now);
@@ -48,6 +54,7 @@ public class CategoryServiceImpl implements CategoryService {
         if(category == null) {
             throw new CategoryException(NOT_FOUND_CATEGORY);
         }
+        //修改分类
         CategoryConvertUtil.categoryDTO2Category(categoryDTO, category);
         long now = System.currentTimeMillis();
         category.setUpdateTime(now);
@@ -55,6 +62,7 @@ public class CategoryServiceImpl implements CategoryService {
         return row > 0 ? Result.success("修改成功") : Result.fail("修改失败");
     }
 
+    //获取当前用户所有分类
     @Override
     public List<Category> getCategorys(Long userId) {
         return categoryMapper.findByUserId(userId);

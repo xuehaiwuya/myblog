@@ -4,7 +4,10 @@ import com.studyinghome.myblog.common.exception.CustomRuntimeException;
 import com.studyinghome.myblog.common.exception.ExceptionStatus;
 
 /**
- * @author tt
+ * ${分类异常}
+ *
+ * @author panxiang
+ * @create 2018-04-17 22:15
  */
 public class CategoryException extends CustomRuntimeException {
 
