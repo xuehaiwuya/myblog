@@ -1,6 +1,5 @@
 package com.studyinghome.myblog.model.vo;
 
-import com.studyinghome.myblog.common.util.HtmlUtil;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -26,6 +25,7 @@ public class ArticleVO implements Serializable {
     private Long id;
     private String title;
     private String fixedLink;
+    private String summary;
     private String content;
     private String html;
     private Integer isShow;
@@ -47,11 +47,11 @@ public class ArticleVO implements Serializable {
     }
     
     public String getDesc() {
-    	String desc = HtmlUtil.getTextFromHtml(html);
+    	String desc = summary;
     	if (StringUtils.isBlank(desc)) {
 			return desc;
 		}
-    	return desc.length() > 200 ? desc.substring(0, 200) : desc;
+    	return desc.length() > 180 ? desc.substring(0, 180) : desc;
     }
 
 }

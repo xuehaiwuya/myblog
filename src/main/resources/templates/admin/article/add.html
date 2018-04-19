@@ -33,12 +33,7 @@
         </p>
         <p class="form-group">
         <p>markdown内容：<a id="j-choose-pic" class="btn btn-success" href="javascript:;">选择图片</a></p>
-
-        <!--<textarea class="form-control j-content" name="content" rows="20" cols="50">$!{article.content}</textarea>-->
-        <div id="test-editormd">
-            <textarea style="display:none;"></textarea>
-        </div>
-
+        <textarea class="form-control j-content" name="content" rows="20" cols="50">$!{article.content}</textarea>
         </p>
 
         <p class="form-group">
@@ -70,20 +65,5 @@
         </p>
     </form>
 </div>
-
-<script src="$!{staticPath}/js/jquery.min.js"></script>
-<script src="$!{staticPath}/js/app/article/editormd.js"></script>
-<script type="text/javascript">
-    //    调用编辑器
-    var testEditor;
-    $(function () {
-        testEditor = editormd("test-editormd", {
-            width: "80%",
-            height: 640,
-            syncScrolling: "single",
-            path: "$!{staticPath}/js/lib/"
-        });
-    });
-</script>
 </body>
 </html>

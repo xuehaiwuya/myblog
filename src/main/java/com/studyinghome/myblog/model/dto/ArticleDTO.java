@@ -36,6 +36,10 @@ public class ArticleDTO extends BaseDTO {
     @Pattern(regexp = "[a-zA-Z0-9\\-]*", message = "固定链接必须是字母数字中划线组成，例如：spring-boot-1")
     private String fixedLink;
 
+    @NotEmpty(message = "摘要不能为空")
+    @Length(min = 1, max = 180, message = "摘要长度在1-200之间")
+    private String summary;
+
     @NotEmpty(message = "内容不能为空")
     private String content;
 

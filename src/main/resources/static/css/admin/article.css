@@ -1,0 +1,12 @@
+.parentss {
+    width: 360px;
+    height: 240px;
+    margin: 0 auto;
+    margin-top: 40px;
+}
+.contentimgss img {
+    width: 220px;
+    height: 220px;
+    margin: 0 auto;
+    display: block;
+}

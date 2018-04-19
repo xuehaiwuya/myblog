@@ -1,18 +1,19 @@
 <header id="header" class="header">
     <div class="container-inner">
-        <div class="yusi-logo">
+        <div class="yusi-logo" style="float: left">
             <a href="$!{ctx}/">
                 <h1>
+                    <span class="yusi-mono"><img src="$!{staticPath}/images/github.png" style="height: 70px;width: 70px;"></span>
                     <span class="yusi-mono">$!{title}</span>
                     <!--<span class="yusi-bloger">$!{author}</span>-->
-                    <span class="yusi-bloger">的博客</span>
+                    <!--<span class="yusi-bloger">的博客</span>-->
                 </h1>
             </a>
         </div>
     </div>
 
     <div id="nav-header" class="navbar">
-#set($cid = $rc.model.httpInclude.request.getParameter('categoryId'))
+        #set($cid = $rc.model.httpInclude.request.getParameter('categoryId'))
         <ul class="nav">
             <li class="menu-item menu-item-type-custom menu-item-object-custom #if(!$cid)current-menu-item current_page_item#end menu-item-home">
                 <a href="$!{ctx}/">首页</a>
@@ -28,14 +29,19 @@
                 <div class="toggle-search"><i class="fa fa-search"></i></div>
                 <div class="search-expand" style="display: none;">
                     <div class="search-expand-inner">
-                        <form method="get" class="searchform themeform" onsubmit="location.href='/article/list?title=' + encodeURIComponent(this.s.value).replace(/%20/g, '+'); return false;" action="/">
-                            <div> <input type="ext" class="search" name="s" onblur="if(this.value=='')this.value='search...';" onfocus="if(this.value=='search...')this.value='';" value="search..."></div>
+                        <form method="get" class="searchform themeform"
+                              onsubmit="location.href='/article/list?title=' + encodeURIComponent(this.s.value).replace(/%20/g, '+'); return false;"
+                              action="/">
+                            <div><input type="ext" class="search" name="s" onblur="if(this.value=='')this.value='search...';"
+                                        onfocus="if(this.value=='search...')this.value='';" value="search..."></div>
                         </form>
                     </div>
                 </div>
             </li>
         </ul>
-        <div class="screen-mini"><button data-type="screen-nav" class="btn btn-inverse screen-nav"><i class="fa fa-list"></i></button></div>
+        <div class="screen-mini">
+            <button data-type="screen-nav" class="btn btn-inverse screen-nav"><i class="fa fa-list"></i></button>
+        </div>
     </div>
 
 </header>

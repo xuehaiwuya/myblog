@@ -3,7 +3,7 @@
 <mapper namespace="com.studyinghome.myblog.mapper.ArticleMapper">
 
 	<sql id="base_column">
-		id, title, fixed_link, content, html, is_show, sort_value, category_id, category_name,
+		id, title, fixed_link, summary, content, html, is_show, sort_value, category_id, category_name,
 		tags, create_user, create_user_name, create_time, update_user, update_time, pv
 	</sql>
 

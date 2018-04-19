@@ -20,6 +20,7 @@ public class Article implements Serializable {
     private Long id;//文章id
     private String title;//标题
     private String fixedLink;//固定连接
+    private String summary;//摘要
     private String content;//内容
     private String html;//内容html
     private Integer isShow;//是否显示(1:显示，0:不显示)
