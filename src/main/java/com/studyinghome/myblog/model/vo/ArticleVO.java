@@ -34,6 +34,7 @@ public class ArticleVO implements Serializable {
     private String createUserName;
     private Date createTime;
     private Long categoryId;
+    private String categoryName;
     private String tags;
     private Long pv;
     
@@ -51,7 +52,7 @@ public class ArticleVO implements Serializable {
     	if (StringUtils.isBlank(desc)) {
 			return desc;
 		}
-    	return desc.length() > 180 ? desc.substring(0, 180) : desc;
+    	return desc.length() > 255 ? desc.substring(0, 255) : desc;
     }
 
 }

@@ -22,6 +22,7 @@ public class ArticleQuery extends BaseQuery {
     private String content;
     private String summary;
     private Long categoryId;
+    private String categoryName;
     private String tags;
 
 }

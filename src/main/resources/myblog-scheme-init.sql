@@ -25,6 +25,7 @@ CREATE TABLE `t_article` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '文章id',
   `title` varchar(50) NOT NULL COMMENT '标题',
   `fixed_link` varchar(255) NOT NULL COMMENT '固定链接',
+  `summer` varchar (255) NOT NULL  COMMENT '摘要',
   `content` text NOT NULL COMMENT '内容',
   `html` text NOT NULL COMMENT '内容html',
   `is_show` int(11) NOT NULL COMMENT '是否显示 1显示 0不显示',

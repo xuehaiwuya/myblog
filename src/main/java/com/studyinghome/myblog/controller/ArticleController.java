@@ -54,6 +54,7 @@ public class ArticleController {
         }
         mv.addObject("id", articleVO.getId());
         mv.addObject("atitle", articleVO.getTitle());
+        mv.addObject("category",articleVO.getCategoryName());
         mv.addObject("createUser", articleVO.getCreateUser());
         mv.addObject("createUserName", articleVO.getCreateUserName());
         mv.addObject("articleId", articleVO.getId());

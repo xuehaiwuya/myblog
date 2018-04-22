@@ -1,76 +1,111 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.studyinghome.myblog.mapper.ArticleMapper">
+    <resultMap id="articleResultMap" type="com.studyinghome.myblog.entity.Article">
+        <!-- 通过id元素映射主键类型 -->
+        <id column="id" property="id"/>
+        <!-- 当字段名和属性名一致是，可写可不写 -->
+        <result column="title" property="title"/>
+        <result column="fixed_link" property="fixedLink"/>
+        <result column="summary" property="summary"/>
+        <result column="content" property="content"/>
+        <result column="html" property="html"/>
+        <result column="is_show" property="isShow"/>
+        <result column="sort_value" property="sortValue"/>
+        <result column="category_id" property="categoryId"/>
+        <result column="category_name" property="categoryName"/>
+        <result column="tags" property="tags"/>
+        <result column="create_user" property="createUser"/>
+        <result column="create_user_name" property="createUserName"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_user" property="updateUser"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="pv" property="pv"/>
+    </resultMap>
 
-	<sql id="base_column">
-		id, title, fixed_link, summary, content, html, is_show, sort_value, category_id, category_name,
+    <sql id="base_column">
+		id , title , fixed_link, summary, content, html, is_show, sort_value, category_id, category_name,
 		tags, create_user, create_user_name, create_time, update_user, update_time, pv
 	</sql>
 
-	<sql id="table_name">t_article</sql>
+    <sql id="table_name">t_article</sql>
 
-	<insert id="save" parameterType="com.studyinghome.myblog.entity.Article" useGeneratedKeys="true" keyProperty="id">
-	    insert into <include refid="table_name" />(<include refid="base_column" />)
-		values (#{id}, #{title}, #{fixedLink}, #{content}, #{html}, #{isShow}, #{sortValue}, #{categoryId},
-		#{categoryName}, #{tags}, #{createUser}, #{createUserName}, #{createTime}, #{updateUser}, #{updateTime}, 0)
-	</insert>
-	
-	<delete id="delete">
-		delete from <include refid="table_name"/>
-		where id = #{id}
-	</delete>
-	
-	<update id="update">
-		update <include refid="table_name"/>
-		set title = #{title},
-		fixed_link = #{fixedLink},
-		content = #{content},
-		html = #{html},
-		is_show = #{isShow},
-		sort_value = #{sortValue},
-		category_id = #{categoryId},
-		category_name = #{categoryName},
-		tags = #{tags},
-		update_user = #{updateUser},
-		update_time = #{updateTime}
-		where id = #{id}
-	</update>
+    <insert id="save" parameterType="com.studyinghome.myblog.entity.Article" useGeneratedKeys="true" keyProperty="id">
+        insert into<include refid="table_name"/>(<include refid="base_column"/>)
+        values (#{id}, #{title}, #{fixedLink},#{summary}, #{content}, #{html}, #{isShow}, #{sortValue}, #{categoryId},
+        #{categoryName}, #{tags}, #{createUser}, #{createUserName}, #{createTime}, #{updateUser}, #{updateTime}, 0)
+    </insert>
 
-	<update id="updatePv">
-		update <include refid="table_name"/>
-		set pv = pv + 1
-		where id = #{id}
-	</update>
-	
-	<select id="findById" resultType="com.studyinghome.myblog.entity.Article">
-		select <include refid="base_column"/> from <include refid="table_name"/>
-		where id = #{id}
-	</select>
+    <delete id="delete">
+        delete from
+        <include refid="table_name"/>
+        where id = #{id}
+    </delete>
 
-	<select id="findByFixedLink" resultType="com.studyinghome.myblog.entity.Article">
-		select <include refid="base_column"/> from <include refid="table_name"/>
-		where fixed_link = #{fixedLink}
-	</select>
-	
-	<select id="findAll" resultType="com.studyinghome.myblog.entity.Article">
-		select <include refid="base_column"/> from <include refid="table_name"/> p
-		where p.create_user = #{q.createUser}
-		<if test="status != -1">
-			and p.is_show = #{status}
-		</if>
-		<if test="q.title != null and q.title != ''">
-			and p.title like CONCAT('%',#{q.title},'%')
-		</if>
-		<if test="q.content != null and q.content != ''">
-			and p.content like CONCAT('%',#{q.content},'%')
-		</if>
-		<if test="q.categoryId != null and q.categoryId > -1">
-			and p.category_id = #{q.categoryId}
-		</if>
-		<if test="q.tags != null and q.tags != ''">
-			and p.tags like CONCAT('%', #{q.tags}, '%')
-		</if>
-		order by p.sort_value desc, p.create_time desc
-	</select>
+    <update id="update">
+        update
+        <include refid="table_name"/>
+        set title = #{title},
+        fixed_link = #{fixedLink},
+        summary = #{summary},
+        content = #{content},
+        html = #{html},
+        is_show = #{isShow},
+        sort_value = #{sortValue},
+        category_id = #{categoryId},
+        category_name = #{categoryName},
+        tags = #{tags},
+        update_user = #{updateUser},
+        update_time = #{updateTime}
+        where id = #{id}
+    </update>
+
+    <update id="updatePv">
+        update
+        <include refid="table_name"/>
+        set pv = pv + 1
+        where id = #{id}
+    </update>
+
+    <select id="findById" resultType="com.studyinghome.myblog.entity.Article">
+        select
+        <include refid="base_column"/>
+        from
+        <include refid="table_name"/>
+        where id = #{id}
+    </select>
+
+    <select id="findByFixedLink" resultType="com.studyinghome.myblog.entity.Article">
+        select
+        <include refid="base_column"/>
+        from
+        <include refid="table_name"/>
+        where fixed_link = #{fixedLink}
+    </select>
+
+    <select id="findAll" resultType="com.studyinghome.myblog.entity.Article">
+        select
+        <include refid="base_column"/>
+        from
+        <include refid="table_name"/>
+        p
+        where p.create_user = #{q.createUser}
+        <if test="status != -1">
+            and p.is_show = #{status}
+        </if>
+        <if test="q.title != null and q.title != ''">
+            and p.title like CONCAT('%',#{q.title},'%')
+        </if>
+        <if test="q.content != null and q.content != ''">
+            and p.content like CONCAT('%',#{q.content},'%')
+        </if>
+        <if test="q.categoryId != null and q.categoryId > -1">
+            and p.category_id = #{q.categoryId}
+        </if>
+        <if test="q.tags != null and q.tags != ''">
+            and p.tags like CONCAT('%', #{q.tags}, '%')
+        </if>
+        order by p.sort_value desc, p.create_time desc
+    </select>
 
 </mapper>

@@ -32,6 +32,11 @@
         <input name="fixedLink" class="form-control j-fixed-link" value="$!{article.fixedLink}">
         </p>
         <p class="form-group">
+        <p>摘要：</p>
+        <textarea name="summary" class="form-control j-content" rows="2" cols="50">$!{article.summary}</textarea>
+        </p>
+
+        <p class="form-group">
         <p>markdown内容：<a id="j-choose-pic" class="btn btn-success" href="javascript:;">选择图片</a></p>
         <textarea class="form-control j-content" name="content" rows="20" cols="50">$!{article.content}</textarea>
         </p>

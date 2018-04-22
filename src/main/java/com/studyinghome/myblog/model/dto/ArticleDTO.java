@@ -56,5 +56,6 @@ public class ArticleDTO extends BaseDTO {
     private String tags;
     
     private Long categoryId;
+    private String categoryName;
 	
 }

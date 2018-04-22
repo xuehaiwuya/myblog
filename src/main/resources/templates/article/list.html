@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-#parse("/article/_common.html")
-<!--<title>$!{title} - $!{createUserName}</title>-->
-<title>$!{title}的博客</title>
+    #parse("/article/_common.html")
+    <!--<title>$!{title} - $!{createUserName}</title>-->
+    <title>$!{title}的博客</title>
 </head>
 <body>
 
-    ${httpInclude.include('/article/header')}
-    <section class="container">
+${httpInclude.include('/article/header')}
+<section class="container">
     #parse("/article/_tip.html")
     <div class="content-wrap">
         <div class="content">
@@ -16,54 +16,61 @@
             #foreach($li in $page.list)
             <article class="excerpt excerpt-nothumbnail">
                 <header>
-                    #* 文章所属目录
-                    <a class="label label-important" href="">$!{li.title}
-                    <i class="label-arrow"></i>
+                    <!--文章所属分类-->
+                    <a class="label label-important" href="">$!{li.categoryName}
+                        <i class="label-arrow"></i>
                     </a>
-                    *#
+
                     <h2><a href="$!{ctx}/article/$!{li.fixedLink}" title="$!{li.title}">$!{li.title}</a></h2>
+                    <!--文章标签-->
+                    <span class="glyphicon glyphicon-tag" style="display:inline-block;margin-left: 20px;">$!{li.tags}</span>
                 </header>
-                #* 文章图片
-                <div class="focus">
+                <!-- 文章图片-->
+                <!--<div class="focus">
                     <a href="!{ctx}/article/$!{li.fixedLink}">
                         <img class="thumb" src="$!{staticPath}/images/zs.jpg" alt="$!{li.title}">
                     </a>
-                </div>
-                *#
-                <span class="note">$!{li.desc}...
+                </div>-->
+
+                <a href="$!{ctx}/article/$!{li.fixedLink}">
+                <span class="note">$!{li.summary}...
                 </span>
-                <p class="auth-span">
-                    <span class="muted"><i class="fa fa-user"></i>$!{li.createUserName}</span> 
-                    <span class="muted"><i class="fa fa-clock-o"></i>$!date.format("yyyy-MM-dd", ${li.createTime})</span> 
-                    <span class="muted"><i class="fa fa-eye"></i> $!{li.pv}℃</span> 
-                    #*
-                    <span class="muted"><i class="fa fa-comments-o"></i> </span>
-                    <span class="muted">
+                </a>
+                <div style="margin-top: 10px">
+                    <p class="auth-span">
+                        <span class="muted"><i class="fa fa-user"></i>$!{li.createUserName}</span>
+                        <span class="muted"><i class="fa fa-clock-o"></i>$!date.format("yyyy-MM-dd", ${li.createTime})</span>
+                        <span class="muted"><i class="fa fa-eye"></i> $!{li.pv}℃</span>
+
+                        <!--评论文章-->
+                        <!--<span class="muted"><i class="fa fa-comments-o"></i> </span>-->
+
+                        <!--喜欢文章-->
+                        <!--<span class="muted">
 	                    <a href="javascript:;" data-action="ding" data-id="1036" id="Addlike" class="action">
 	                        <i class="fa fa-heart-o"></i>
 	                        <span class="count">5</span>喜欢
 	                    </a>
-                    </span>
-                    *#
-                </p>
+                    </span>-->
+                    </p>
+                </div>
             </article>
             #end
             #else
             <article class="excerpt excerpt-nothumbnail">
-            <header>
-            <h2>博主还没有撰写此类文章哦</h2>
-            </header>
+                <header>
+                    <h2>博主还没有撰写此类文章哦</h2>
+                </header>
             </article>
             #end
             <form>
-            <input type="hidden" name="categoryId" value="$!{articleQuery.categoryId}">
-            #parse("/article/_page.html")
+                <input type="hidden" name="categoryId" value="$!{articleQuery.categoryId}">
+                #parse("/article/_page.html")
             </form>
-         </div>
+        </div>
     </div>
     ${httpInclude.include('/article/sidebar')}
-    </section>
-    #parse("/article/_footer.html")
-
+</section>
+#parse("/article/_footer.html")
 </body>
 </html>
