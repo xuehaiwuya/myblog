@@ -54,11 +54,13 @@ public class ArticleController {
         }
         mv.addObject("id", articleVO.getId());
         mv.addObject("atitle", articleVO.getTitle());
+        mv.addObject("categoryId",articleVO.getCategoryId());
         mv.addObject("category",articleVO.getCategoryName());
         mv.addObject("createUser", articleVO.getCreateUser());
         mv.addObject("createUserName", articleVO.getCreateUserName());
         mv.addObject("articleId", articleVO.getId());
         mv.addObject("desc", articleVO.getDesc());
+        mv.addObject("tags", articleVO.getTags());
         mv.addObject("html", articleVO.getHtml());
         mv.addObject("time", DateUtil.date2String(articleVO.getCreateTime(), DateUtil.YYYY_MM_DD));
         mv.addObject("pv", articleVO.getPv());

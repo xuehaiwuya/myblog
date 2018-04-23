@@ -23,7 +23,7 @@ ${httpInclude.include('/article/header')}
 
                     <h2><a href="$!{ctx}/article/$!{li.fixedLink}" title="$!{li.title}">$!{li.title}</a></h2>
                     <!--文章标签-->
-                    <span class="glyphicon glyphicon-tag" style="display:inline-block;margin-left: 20px;">$!{li.tags}</span>
+                    <span style="display:inline-block;margin-left: 20px;"><img src="$!{staticPath}/images/tags.png" width="25px"; height="25px">$!{li.tags}</span>
                 </header>
                 <!-- 文章图片-->
                 <!--<div class="focus">
@@ -36,7 +36,7 @@ ${httpInclude.include('/article/header')}
                 <span class="note">$!{li.summary}...
                 </span>
                 </a>
-                <div style="margin-top: 10px">
+                <div style="margin-top: 15px">
                     <p class="auth-span">
                         <span class="muted"><i class="fa fa-user"></i>$!{li.createUserName}</span>
                         <span class="muted"><i class="fa fa-clock-o"></i>$!date.format("yyyy-MM-dd", ${li.createTime})</span>
