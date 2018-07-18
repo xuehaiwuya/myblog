@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    #parse("/article/_common.html")
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:include="/article/_common::html">
+    <!--#parse("/article/_common.html")-->
     <!--<title>$!{title} - $!{createUserName}</title>-->
     <title>$!{title}的博客</title>
 </head>
